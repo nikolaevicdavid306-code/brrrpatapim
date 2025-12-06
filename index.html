@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Мини викторина</h1>
+    <p id="question"></p>
+    <input id="answer" type="text" placeholder="Ответ">
+    <button onclick="next()">Нажми</button>
+    <p id="result"></p>
+    <script>
+        let questions = [
+            "Сколько популярных футбольных лиг существует? ",
+            "Какой футболист получил 8 Золотых мячей?",
+            "Сколько ЛЧ у Реала",
+            "Какая сборная выиграла Чемпионат Мира по футболу в 2022 году?",
+            "Лучшее трио в истории футбола?",
+            "Кого из футболистов называют Черепашкой ниндзя?"
+        ]
+        let answers = [
+            "6",
+            "Месси",
+            "15",
+            "Аргентина",
+            "MSN",
+            "Мбаппе"
+        ]
+        let current = 0;
+        let score = 0;
+        document.getElementById("question").textContent = questions[current];
+        function next(){
+            let userAnswer = document.getElementById("answer").value;
+            if (userAnswer.trim().toLowerCase() === answers[current].toLowerCase()){
+                score++
+            }
+            current++;
+            if(current >= questions.lenght){
+                document.getElementById("question").textContent = "Викторина завершена";
+                document.getElementById("result").textContent = "Ваш результат" + score;
+                document.getElementById("answer").style.display = "none";
+                return;
+            }
+            document.getElementById("question").textContent = questions[current];
+            document.getElementById("answer").value = "";
+        }
+
+
+
+        // let fruits = [1, "banana", "orange" true, false, "apple"];
+        // console.log(fruits);
+        // console.log(fruits[1]);
+        // console.log(fruits);
+        // fruits.pop("orange");
+        // console.log(fruits);
+        // fruits.shift();
+        // console.log(fruits);
+        // let cities = [
+        //     "Moscow", 
+        //     "Madrid", 
+        //     "New York"
+        // ];
+        // console.log(cities)
+    </script>
+</body>
+</html>
